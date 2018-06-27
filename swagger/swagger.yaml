@@ -1,0 +1,150 @@
+---
+  swagger: "2.0"
+  info:
+    description: "Multi-tenant demo application" 
+    version: "1.0.1"
+    title: "Multi-tenant Demo API"
+    contact:
+      email: "tom.dierckx@digipolis.be"
+  basePath: "/v1"
+  tags:
+  - name: "status"
+    description: "All status related info"
+  paths:
+    /status/health:
+      get:
+        tags:
+        - "status"
+        summary: "Health endpoint"
+        description: "This is the monitoring endpoint of store"
+        operationId: "getStatusHealth"
+        parameters: []
+        responses:
+          200:
+            description: "Everything is OK"
+            schema:
+              $ref: "#/definitions/StatusHealth"
+          500:
+            description: "Something is wrong see payload for exact status (degraded/outage)"
+            schema:
+              $ref: "#/definitions/StatusHealthNOK"
+    /status/health/components:
+      get:
+        tags:
+        - "status"
+        summary: "Health Components"
+        description: "This is the monitoring endpoint of store"
+        operationId: "getStatusHealthComponents"
+        parameters: []
+        responses:
+          200:
+            description: "Everything is OK"
+            schema:
+              $ref: "#/definitions/StatusHealthComponents"
+          500:
+            description: "See payload for broken dependancies"
+            schema:
+              $ref: "#/definitions/StatusHealthComponents"
+    /status/metrics:
+      get:
+        tags:
+        - "status"
+        summary: "Monitoring endpoint"
+        description: "This is the monitoring endpoint of store"
+        operationId: "getStatusMetrics"
+        parameters: []
+        responses:
+          200:
+            description: "Metrics"
+            schema:
+              $ref: "#/definitions/StatusMetrics"
+          500:
+            description: "See payload for broken dependancies"
+            schema:
+              $ref: "#/definitions/ErrorModel"
+  definitions:
+    StatusHealth:
+      type: "object"
+      required:
+      - "status"
+      properties:
+        status:
+          $ref: '#/definitions/Status'
+      example:
+        status: 'ok'
+    StatusHealthNOK:
+      type: "object"
+      required:
+      - "status"
+      properties:
+        status:
+          $ref: '#/definitions/Status'
+      example:
+        status: 'degraded'
+    ErrorModel:
+      type: "object"
+      properties:
+        identifier:
+          type: "string"
+          format: "uuid"
+        code:
+          type: "string"
+        type:
+          type: "string"
+        title:
+          type: "string"
+        status:
+          type: "integer"
+          format: "int32"
+    StatusHealthComponents:
+      required:
+      - "components"
+      - "status"
+      properties:
+        components:
+          type: "array"
+          items:
+            $ref: "#/definitions/Component"
+        status:
+          $ref: "#/definitions/Status"
+      example:
+        components:
+        - errormessage: "Logging engine not reachable"
+          name: "name"
+          details: "details"
+          type: "type"
+          status: "status"
+        - errormessage: "errormessage"
+          name: "name"
+          details: "details"
+          type: "type"
+          status: "status"
+        status: "status"
+    Component:
+      required:
+      - "name"
+      - "status"
+      - "type"
+      properties:
+        errormessage:
+          type: "string"
+        name:
+          type: "string"
+        details:
+          type: "string"
+        type:
+          type: "string"
+        status:
+          $ref: '#/definitions/Status'
+    StatusMetrics:
+      type: string
+    Status:
+      type: string
+      enum:
+        - ok
+        - degraded
+        - outage
+  externalDocs:
+    description: "Find out more about Swagger"
+    url: "http://swagger.io"
+  
