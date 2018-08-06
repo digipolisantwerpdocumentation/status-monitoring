@@ -1,9 +1,9 @@
 # Status endpoint
-Dit document is een richtlijn naar inrichting van de health check endpoint ingebouwd op alle REST API's. 
+Dit document is een richtlijn naar inrichting van het health check endpoint ingebouwd op alle REST API's. 
 Alle endpoints komen onder de resource `/status` terecht.
 
 ## Health
-Deze endpoint beschrijft de werking van de service. Als deze niet werkende is zullen onderstaande niveaus worden gebruikt.
+Dit endpoint beschrijft de werking van de service.
 
 #### Status niveau's
 Er zijn 3 verschillende niveaus van health status gedefinieerd.
@@ -11,11 +11,11 @@ Er zijn 3 verschillende niveaus van health status gedefinieerd.
 status|verklaring
 -------|-------
 ok|de service werkt 
-degraded|de service functioneert niet meer op 100% niet kritieke systemen zijn niet bereikbaar of de applicatie verwerkt trager requests
+degraded|de service functioneert niet meer op 100%, niet kritische systemen zijn niet bereikbaar of de applicatie verwerkt requests trager
 outage|ernstige problemen die er toe leiden dat de service niet meer werkt.
 
 #### Basis response
-Default zouden we deze status aanbieden naar afnemers toe, deze endpoint zou mee publiek ontsloten zijn op de API Gateway. Omdat consumers alleen geïnteresseerd zijn in of de service werkt.
+Default zouden we volgende status aanbieden omdat consumers alleen willen weten of de service werkt. Dit endpoint wordt publiek mee ontsloten op de API Gateway.
 ```
 /status/health
 ```
@@ -35,7 +35,7 @@ De applicatie heeft status ok. De applicatie zal correct werken.
 
 ##### Degraded
 
-Bepaalde niet critische systemen zijn onbeschikbaar (bijvoorbeeld logging, limiet van DB connecties is bereikt).
+Bepaalde niet kritische systemen zijn onbeschikbaar (bijvoorbeeld logging, limiet van DB connecties is bereikt).
 
 ##### Outage
 
@@ -43,7 +43,7 @@ De applicatie kan op dit moment  zijn primaire functie niet uitvoeren.
 
 #### Components
 
-Voor het continuous monitoring platform is er de components endpoint. Deze geeft een overzicht van alle afhankelijkheden en hun status. 
+Voor het continuous monitoring platform is er het components endpoint. Dit geeft een overzicht van alle afhankelijkheden en hun status. 
 Dit endpoint is voorbehouden voor het continuous monitoring platform en zal niet worden ontsloten op de API Gateway.
 
 ```
