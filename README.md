@@ -1,5 +1,5 @@
 # Status endpoint
-Dit document is een richtlijn naar inrichting van het health check endpoint ingebouwd op alle REST API's. 
+Dit document is een richtlijn naar inrichting van het health check endpoint ingebouwd op alle REST API's.
 Alle endpoints komen onder de resource `/status` terecht.
 
 ## Health
@@ -10,7 +10,7 @@ Er zijn 3 verschillende niveaus van health status gedefinieerd.
 
 status|verklaring
 -------|-------
-ok|de service werkt 
+ok|de service werkt
 degraded|de service functioneert niet meer op 100%, niet kritische systemen zijn niet bereikbaar of de applicatie verwerkt requests trager
 outage|ernstige problemen die er toe leiden dat de service niet meer werkt.
 
@@ -43,7 +43,7 @@ De applicatie kan op dit moment  zijn primaire functie niet uitvoeren.
 
 #### Components
 
-Voor het continuous monitoring platform is er het components endpoint. Dit geeft een overzicht van alle afhankelijkheden en hun status. 
+Voor het continuous monitoring platform is er het components endpoint. Dit geeft een overzicht van alle afhankelijkheden en hun status.
 Dit endpoint is voorbehouden voor het continuous monitoring platform en zal niet worden ontsloten op de API Gateway.
 
 ```
@@ -79,9 +79,9 @@ Endpoint waar het continuous monitoring systeem metrics kan opvragen van de stat
 ```
 /status/metrics
 ```
-Default supported layout van prometheus is in plain formaat.
+Default supported layout van continuous monitoring is in prometheus plain text formaat. Beschijving van de layout is [hier][prometheus metrics format] terug te vinden.
 
-Flask metrics example:
+Flask (Python web framework) metrics example:
 ```
 process_virtual_memory_bytes 897339392.0
 process_resident_memory_bytes 123064320.0
@@ -131,16 +131,17 @@ Overzicht van endpoints en hun publicatie
 
 endpoint				| 	Continuous Monitoring		|	Publicatie op GW	|	Gebruiker
 -------------------------	|		----------------			|	----------------------	|	-----------------
-`/status/system`				|							|					|	PaaS Systeem
 `/status/health`				|							|		X			|	API GW
 `/status/health/components`	|			X				|					|	Continuous Monitoring
 `/status/metrics`			|			X				|		X			|	Continuous Monitoring
 
 Overzicht:
-![](afbeeldingen/overzicht.png) 
+![](afbeeldingen/overzicht.png)
 
 ## References
 
 Spring default endpoints => https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html
 Microsoft health endpoint monitoring => https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
 Prometheus metric scraping: https://codeblog.dotsandbrackets.com/scraping-application-metrics-prometheus/
+
+[prometheus metrics format]: https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md
