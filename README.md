@@ -79,7 +79,7 @@ Endpoint waar het continuous monitoring systeem metrics kan opvragen van de stat
 ```
 /status/metrics
 ```
-Default supported layout van continuous monitoring is in prometheus plain text formaat. Beschijving van de layout is [hier][prometheus metrics format] terug te vinden.
+Default supported layout van continuous monitoring is in prometheus plain/text formaat. Beschrijving van de layout is [hier][prometheus metrics format] terug te vinden.
 
 Flask (Python web framework) metrics example:
 ```
