@@ -79,7 +79,7 @@ Endpoint waar het continuous monitoring systeem metrics kan opvragen van de stat
 ```
 /status/metrics
 ```
-Default supported layout van continuous monitoring is in prometheus plain/text formaat. Beschrijving van de layout is [hier][prometheus metrics format] terug te vinden.
+Default supported layout van continuous monitoring is in prometheus plain/text formaat. Beschrijving van de layout is [hier](#prometheus-metrics-format) terug te vinden.
 
 Flask (Python web framework) metrics example:
 ```
@@ -140,8 +140,7 @@ Overzicht:
 
 ## References
 
-Spring default endpoints => https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html
-Microsoft health endpoint monitoring => https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
-Prometheus metric scraping: https://codeblog.dotsandbrackets.com/scraping-application-metrics-prometheus/
-
-[prometheus metrics format]: https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md
+- [Spring default endpoints](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html)
+- [Microsoft health endpoint monitoring](https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring)
+- [Prometheus metrics scraping](https://codeblog.dotsandbrackets.com/scraping-application-metrics-prometheus/)
+- <a name="prometheus-metrics-format"/>[Prometheus metrics format](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md)
