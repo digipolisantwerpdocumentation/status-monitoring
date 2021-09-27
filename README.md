@@ -34,22 +34,25 @@ De afnemer van de service kan dan zelf de status pagina opvragen en naargelang d
 
 #### Status types
 
-##### HTTP200 & Ok
+##### Status ok
+Betekenis: de applicatie heeft status 'ok' indien de apllicatie en afhankelijkheden correct werken.
 
-De applicatie heeft status ok. De applicatie zal correct werken.
+Probe /status/live geeft een HTTP200, de pod wordt niet herstart niet door Kubernetes.
+Probe /status/ready geeft een HTTP200, de Kubernetes ingress controller laat requests op de toepassing toe.
 
-##### HTTP500
+##### Status degraded
+Betekenis: de applicatie heeft status 'degraded' indien bepaalde niet-kritische systemen onbeschikbaar zijn (bijvoorbeeld logging, limiet van DB connecties is bereikt).
 
-Bepaalde niet kritische systemen zijn onbeschikbaar (bijvoorbeeld logging, limiet van DB connecties is bereikt).
+HTTP500
 
-##### HTTP500
 
-De applicatie kan op dit moment  zijn primaire functie niet uitvoeren.
+#####  Status outage
+Betekenis: de applicatie heeft status 'outage' indien de de applicatie op dit moment zijn primaire functie niet uitvoeren.
+
+HTTP500
 
 #### Components
-
-Voor het continuous monitoring platform is er het components endpoint. Dit geeft een overzicht van alle afhankelijkheden en hun status.
-Dit endpoint is voorbehouden voor het continuous monitoring platform en zal niet worden ontsloten op de API Gateway.
+Betekenis: het components endpoint geeft een overzicht van alle afhankelijkheden en hun status.
 
 ```
 /status/health/components
