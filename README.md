@@ -11,9 +11,9 @@ Dit endpoint beschrijft de werking van de service.
 Alle endpoints komen onder de resource `/status` terecht.
 
 #### Status niveau's
-Er zijn 3 verschillende niveaus van health status gedefinieerd.
+Er zijn 3 verschillende niveaus van health status gedefinieerd:
 
-status|verklaring
+status|betekenis
 -------|-------
 Ok|de service werkt
 Degraded|de service functioneert niet meer op 100%, niet kritische systemen zijn niet bereikbaar of de applicatie verwerkt requests trager
