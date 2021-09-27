@@ -127,7 +127,8 @@ flask_http_request_duration_seconds_sum{method="POST",path="/uploads",status="20
 ```
 
 ## References
+- <a name="prometheus-metrics-format"/>[Prometheus metrics format](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md)
 - [Prometheus client libraries](https://prometheus.io/docs/instrumenting/clientlibs/)
 - [Spring default endpoints](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html)
 - [Microsoft health endpoint monitoring pattern](https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring)
-- <a name="prometheus-metrics-format"/>[Prometheus metrics format](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md)
+
