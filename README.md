@@ -1,9 +1,14 @@
-# Status endpoint
-Dit document is een richtlijn naar inrichting van het health check endpoint ingebouwd op alle REST API's.
-Alle endpoints komen onder de resource `/status` terecht.
+# Status monitoring
+
+Dit document is een richtlijn naar inrichting van het health monitoring.
+
+1) Probes versus health checks
+2) metrics
+
 
 ## Health
 Dit endpoint beschrijft de werking van de service.
+Alle endpoints komen onder de resource `/status` terecht.
 
 #### Status niveau's
 Er zijn 3 verschillende niveaus van health status gedefinieerd.
