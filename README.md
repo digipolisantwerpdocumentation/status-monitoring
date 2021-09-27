@@ -93,8 +93,26 @@ Voorbeeld response:
 ```
 ## Kubernetes probes
 
-Probe /status/live geeft een HTTP200, de pod wordt niet herstart niet door Kubernetes.
-Probe /status/ready geeft een HTTP200, de Kubernetes ingress controller laat requests op de toepassing toe.
+#####  Liveness probe
+
+Betekenis: de status van de pod, indien niet ok wordt de pod herstart door Kubernetes.
+
+```
+/status/live
+```
+
+De probe /status/live heeft geen body en geeft een statuscode HTTP200 indien ok, indien niet ok statuscode HTTP500
+
+#####  Readiness probe
+
+Betekenis: de oplossing is beschikbaar, de Kubernetes ingress controller laat requests op de toepassing toe.
+
+```
+/status/ready
+```
+
+De probe /status/ready heeft geen body geeft een statuscode HTTP200 indien ok, indien niet ok statuscode HTTP500.
+
 
 ## Prometheus Metrics
 Endpoint waar het continuous monitoring systeem metrics kan opvragen van de status.
