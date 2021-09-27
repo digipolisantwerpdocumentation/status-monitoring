@@ -121,7 +121,7 @@ Endpoint waar Prometheus metrics kan opvragen van de status.
 ```
 /status/metrics
 ```
-Default supported layout van continuous monitoring is in prometheus plain/text formaat. Beschrijving van de layout is [hier](#prometheus-metrics-format) terug te vinden.
+Default supported layout is [hier](#prometheus-metrics-format) terug te vinden.
 
 Flask (Python web framework) metrics example:
 ```
@@ -145,19 +145,6 @@ flask_http_request_duration_seconds_bucket{le="1.0",method="GET",path="/favicon.
 flask_http_request_duration_seconds_bucket{le="+Inf",method="GET",path="/favicon.ico",status="404"} 1.0
 flask_http_request_duration_seconds_count{method="GET",path="/favicon.ico",status="404"} 1.0
 flask_http_request_duration_seconds_sum{method="GET",path="/favicon.ico",status="404"} 0.11943134200009808
-flask_http_request_duration_seconds_bucket{le="0.005",method="POST",path="/uploads",status="202"} 0.0
-flask_http_request_duration_seconds_bucket{le="0.01",method="POST",path="/uploads",status="202"} 0.0
-flask_http_request_duration_seconds_bucket{le="0.025",method="POST",path="/uploads",status="202"} 0.0
-flask_http_request_duration_seconds_bucket{le="0.05",method="POST",path="/uploads",status="202"} 1.0
-flask_http_request_duration_seconds_bucket{le="0.075",method="POST",path="/uploads",status="202"} 1.0
-flask_http_request_duration_seconds_bucket{le="0.1",method="POST",path="/uploads",status="202"} 1.0
-flask_http_request_duration_seconds_bucket{le="0.25",method="POST",path="/uploads",status="202"} 1.0
-flask_http_request_duration_seconds_bucket{le="0.5",method="POST",path="/uploads",status="202"} 1.0
-flask_http_request_duration_seconds_bucket{le="0.75",method="POST",path="/uploads",status="202"} 1.0
-flask_http_request_duration_seconds_bucket{le="1.0",method="POST",path="/uploads",status="202"} 1.0
-flask_http_request_duration_seconds_bucket{le="+Inf",method="POST",path="/uploads",status="202"} 1.0
-flask_http_request_duration_seconds_count{method="POST",path="/uploads",status="202"} 1.0
-flask_http_request_duration_seconds_sum{method="POST",path="/uploads",status="202"} 0.03629215999990265
 ```
 
 ## References
