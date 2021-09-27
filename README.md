@@ -101,7 +101,7 @@ Betekenis: de status van de pod, indien niet ok wordt de pod herstart door Kuber
 /status/live
 ```
 
-De probe /status/live heeft geen body en geeft een statuscode HTTP200 indien ok, indien niet ok statuscode HTTP500
+De liveness probe geeft enkel een statuscode HTTP200 indien ok, indien niet ok statuscode HTTP500
 
 #####  Readiness probe
 
@@ -111,7 +111,7 @@ Betekenis: de oplossing is beschikbaar, de Kubernetes ingress controller laat re
 /status/ready
 ```
 
-De probe /status/ready heeft geen body geeft een statuscode HTTP200 indien ok, indien niet ok statuscode HTTP500.
+De readiness probe geeft enkel een statuscode HTTP200 indien ok, indien niet ok statuscode HTTP500.
 
 
 ## Prometheus Metrics
@@ -140,10 +140,6 @@ flask_http_request_duration_seconds_bucket{le="0.25",method="GET",path="/favicon
 flask_http_request_duration_seconds_bucket{le="0.5",method="GET",path="/favicon.ico",status="404"} 1.0
 flask_http_request_duration_seconds_bucket{le="0.75",method="GET",path="/favicon.ico",status="404"} 1.0
 flask_http_request_duration_seconds_bucket{le="1.0",method="GET",path="/favicon.ico",status="404"} 1.0
-flask_http_request_duration_seconds_bucket{le="2.5",method="GET",path="/favicon.ico",status="404"} 1.0
-flask_http_request_duration_seconds_bucket{le="5.0",method="GET",path="/favicon.ico",status="404"} 1.0
-flask_http_request_duration_seconds_bucket{le="7.5",method="GET",path="/favicon.ico",status="404"} 1.0
-flask_http_request_duration_seconds_bucket{le="10.0",method="GET",path="/favicon.ico",status="404"} 1.0
 flask_http_request_duration_seconds_bucket{le="+Inf",method="GET",path="/favicon.ico",status="404"} 1.0
 flask_http_request_duration_seconds_count{method="GET",path="/favicon.ico",status="404"} 1.0
 flask_http_request_duration_seconds_sum{method="GET",path="/favicon.ico",status="404"} 0.11943134200009808
@@ -157,10 +153,6 @@ flask_http_request_duration_seconds_bucket{le="0.25",method="POST",path="/upload
 flask_http_request_duration_seconds_bucket{le="0.5",method="POST",path="/uploads",status="202"} 1.0
 flask_http_request_duration_seconds_bucket{le="0.75",method="POST",path="/uploads",status="202"} 1.0
 flask_http_request_duration_seconds_bucket{le="1.0",method="POST",path="/uploads",status="202"} 1.0
-flask_http_request_duration_seconds_bucket{le="2.5",method="POST",path="/uploads",status="202"} 1.0
-flask_http_request_duration_seconds_bucket{le="5.0",method="POST",path="/uploads",status="202"} 1.0
-flask_http_request_duration_seconds_bucket{le="7.5",method="POST",path="/uploads",status="202"} 1.0
-flask_http_request_duration_seconds_bucket{le="10.0",method="POST",path="/uploads",status="202"} 1.0
 flask_http_request_duration_seconds_bucket{le="+Inf",method="POST",path="/uploads",status="202"} 1.0
 flask_http_request_duration_seconds_count{method="POST",path="/uploads",status="202"} 1.0
 flask_http_request_duration_seconds_sum{method="POST",path="/uploads",status="202"} 0.03629215999990265
