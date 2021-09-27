@@ -2,7 +2,7 @@
 
 Dit document is een richtlijn naar inrichting van health monitoring voor verschillende componenten binnen een oplossing.
 
-1) Probes versus health checks
+1) Kubernetes probes versus health checks
 2) Metrics
 
 
