@@ -17,7 +17,7 @@ status|betekenis
 -------|-------
 Ok|de service werkt
 Degraded|de service functioneert niet meer op 100%, niet kritische systemen zijn niet bereikbaar of de applicatie verwerkt requests trager
-Outage|ernstige problemen die er toe leiden dat de service niet meer werkt.
+Outage|de service werkt niet meer omwille van ernstige problemen
 
 #### Basis response
 Default zouden we volgende status aanbieden omdat consumers alleen willen weten of de service werkt. Dit endpoint wordt publiek mee ontsloten op de API Gateway.
