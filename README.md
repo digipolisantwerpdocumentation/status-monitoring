@@ -93,6 +93,8 @@ Voorbeeld response:
 ```
 ## Kubernetes probes
 
+Vereiste: RECOMMENDED
+
 #####  Liveness probe
 
 Betekenis: de status van de pod, indien niet ok wordt de pod herstart door Kubernetes.
