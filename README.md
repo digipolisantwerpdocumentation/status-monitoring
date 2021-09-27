@@ -126,18 +126,6 @@ flask_http_request_duration_seconds_count{method="POST",path="/uploads",status="
 flask_http_request_duration_seconds_sum{method="POST",path="/uploads",status="202"} 0.03629215999990265
 ```
 
-## Publicatie op API Gateway en security
-Overzicht van endpoints en hun publicatie
-
-endpoint				| 	Continuous Monitoring		|	Publicatie op GW	|	Gebruiker
--------------------------	|		----------------			|	----------------------	|	-----------------
-`/status/health`				|							|		X			|	API GW
-`/status/health/components`	|			X				|					|	Continuous Monitoring
-`/status/metrics`			|			X				|		X			|	Continuous Monitoring
-
-Overzicht:
-![](afbeeldingen/overzicht.png)
-
 ## References
 
 - [Spring default endpoints](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html)
