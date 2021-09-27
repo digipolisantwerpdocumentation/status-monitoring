@@ -1,23 +1,24 @@
 # Status monitoring
 
-Dit document is een richtlijn naar inrichting van health monitoring voor verschillende componenten binnen een oplossing.
+Dit document is een richtlijn naar inrichting van monitoring voor verschillende componenten binnen een oplossing.
 
-1) Kubernetes probes versus health checks
-2) Metrics
+We maken een onderscheid tussen:
+1) Kubernetes probes versus CheckMK health checks
+2) Prometheus metrics (optioneel, indien relevant ifv vb. performantie)
 
 
-## Health
+## CheckMK health checks
 Dit endpoint beschrijft de werking van de service.
 Alle endpoints komen onder de resource `/status` terecht.
 
 #### Status niveau's
 Er zijn 3 verschillende niveaus van health status gedefinieerd:
 
-status|betekenis
--------|-------
-Ok|de service werkt
-Degraded|de service functioneert niet meer op 100%, niet kritische systemen zijn niet bereikbaar of de applicatie verwerkt requests trager
-Outage|de service werkt niet meer omwille van ernstige problemen
+Vereiste?|status|betekenis
+-------|-------|-------
+REQUIRED|Ok|de service werkt
+RECOMMENDED|Degraded|de service functioneert niet meer op 100%, niet kritische systemen zijn niet bereikbaar of de applicatie verwerkt requests trager
+RECOMMENDED|Outage|de service werkt niet meer omwille van ernstige problemen
 
 #### Basis response
 Default zouden we volgende status aanbieden omdat consumers alleen willen weten of de service werkt. Dit endpoint wordt publiek mee ontsloten op de API Gateway.
@@ -82,7 +83,7 @@ Voorbeeld response:
 }
 ```
 
-## Metrics
+## Prometheus Metrics
 Endpoint waar het continuous monitoring systeem metrics kan opvragen van de status.
 ```
 /status/metrics
