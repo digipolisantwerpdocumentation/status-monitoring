@@ -1,9 +1,9 @@
 # Status monitoring
 
-Dit document is een richtlijn naar inrichting van het health monitoring.
+Dit document is een richtlijn naar inrichting van health monitoring voor verschillende componenten binnen een oplossing.
 
 1) Probes versus health checks
-2) metrics
+2) Metrics
 
 
 ## Health
