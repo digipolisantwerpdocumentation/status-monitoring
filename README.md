@@ -15,14 +15,14 @@ Er zijn 3 verschillende niveaus van health status gedefinieerd.
 
 status|verklaring
 -------|-------
-HTTP200 & ok|de service werkt
-HTTP500 |de service functioneert niet meer op 100%, niet kritische systemen zijn niet bereikbaar of de applicatie verwerkt requests trager
-HTTP500 |ernstige problemen die er toe leiden dat de service niet meer werkt.
+Ok|de service werkt
+Degraded|de service functioneert niet meer op 100%, niet kritische systemen zijn niet bereikbaar of de applicatie verwerkt requests trager
+Outage|ernstige problemen die er toe leiden dat de service niet meer werkt.
 
 #### Basis response
 Default zouden we volgende status aanbieden omdat consumers alleen willen weten of de service werkt. Dit endpoint wordt publiek mee ontsloten op de API Gateway.
 ```
-/status/health
+/status/ping
 ```
 Response:
 ```
