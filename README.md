@@ -15,9 +15,9 @@ Er zijn 3 verschillende niveaus van health status gedefinieerd.
 
 status|verklaring
 -------|-------
-ok|de service werkt
-degraded|de service functioneert niet meer op 100%, niet kritische systemen zijn niet bereikbaar of de applicatie verwerkt requests trager
-outage|ernstige problemen die er toe leiden dat de service niet meer werkt.
+HTTP200 & ok|de service werkt
+HTTP500 |de service functioneert niet meer op 100%, niet kritische systemen zijn niet bereikbaar of de applicatie verwerkt requests trager
+HTTP500 |ernstige problemen die er toe leiden dat de service niet meer werkt.
 
 #### Basis response
 Default zouden we volgende status aanbieden omdat consumers alleen willen weten of de service werkt. Dit endpoint wordt publiek mee ontsloten op de API Gateway.
@@ -27,22 +27,22 @@ Default zouden we volgende status aanbieden omdat consumers alleen willen weten 
 Response:
 ```
 {
-  "status": "degraded"
+  "status": "ok"
 }
 ```
 De afnemer van de service kan dan zelf de status pagina opvragen en naargelang de response acties ondernemen. (bv. een error pagina weergeven, bepaalde transacties bufferen, ...).
 
 #### Status types
 
-##### Ok
+##### HTTP200 & Ok
 
 De applicatie heeft status ok. De applicatie zal correct werken.
 
-##### Degraded
+##### HTTP500
 
 Bepaalde niet kritische systemen zijn onbeschikbaar (bijvoorbeeld logging, limiet van DB connecties is bereikt).
 
-##### Outage
+##### HTTP500
 
 De applicatie kan op dit moment  zijn primaire functie niet uitvoeren.
 
