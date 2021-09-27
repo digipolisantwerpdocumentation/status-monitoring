@@ -3,7 +3,7 @@
 Dit document is een richtlijn naar inrichting van monitoring voor verschillende componenten binnen een oplossing.
 
 We maken een onderscheid tussen:
-1) Kubernetes probes versus CheckMK health checks
+1) CheckMK health checks versus Kubernetes probes
 2) Prometheus metrics (optioneel, indien relevant ifv vb. performantie)
 
 
@@ -14,13 +14,17 @@ Alle endpoints komen onder de resource `/status` terecht.
 #### Status niveau's
 Er zijn 3 verschillende niveaus van health status gedefinieerd:
 
-Vereiste?|status|betekenis
+Vereiste?|status type|betekenis
 -------|-------|-------
 REQUIRED|Ok|de service werkt
 RECOMMENDED|Degraded|de service functioneert niet meer op 100%, niet kritische systemen zijn niet bereikbaar of de applicatie verwerkt requests trager
 RECOMMENDED|Outage|de service werkt niet meer omwille van ernstige problemen
 
-#### Basis response
+#### Status types
+
+##### Status ok
+
+Betekenis: de applicatie heeft status 'ok' indien de apllicatie en afhankelijkheden correct werken.
 Default zouden we volgende status aanbieden omdat consumers alleen willen weten of de service werkt. Dit endpoint wordt publiek mee ontsloten op de API Gateway.
 ```
 /status/ping
@@ -33,24 +37,29 @@ Response:
 ```
 De afnemer van de service kan dan zelf de status pagina opvragen en naargelang de response acties ondernemen. (bv. een error pagina weergeven, bepaalde transacties bufferen, ...).
 
-#### Status types
-
-##### Status ok
-Betekenis: de applicatie heeft status 'ok' indien de apllicatie en afhankelijkheden correct werken.
-
-Probe /status/live geeft een HTTP200, de pod wordt niet herstart niet door Kubernetes.
-Probe /status/ready geeft een HTTP200, de Kubernetes ingress controller laat requests op de toepassing toe.
 
 ##### Status degraded
 Betekenis: de applicatie heeft status 'degraded' indien bepaalde niet-kritische systemen onbeschikbaar zijn (bijvoorbeeld logging, limiet van DB connecties is bereikt).
-
-HTTP500
-
-
+```
+/status/ping
+```
+Response:
+```
+{
+  "status": "degraded"
+}
+```
 #####  Status outage
 Betekenis: de applicatie heeft status 'outage' indien de de applicatie op dit moment zijn primaire functie niet uitvoeren.
-
-HTTP500
+```
+/status/ping
+```
+Response:
+```
+{
+  "status": "outage"
+}
+```
 
 #### Components
 Betekenis: het components endpoint geeft een overzicht van alle afhankelijkheden en hun status.
@@ -82,6 +91,10 @@ Voorbeeld response:
   ]
 }
 ```
+## Kubernetes probes
+
+Probe /status/live geeft een HTTP200, de pod wordt niet herstart niet door Kubernetes.
+Probe /status/ready geeft een HTTP200, de Kubernetes ingress controller laat requests op de toepassing toe.
 
 ## Prometheus Metrics
 Endpoint waar het continuous monitoring systeem metrics kan opvragen van de status.
