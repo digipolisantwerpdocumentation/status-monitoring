@@ -117,7 +117,7 @@ De readiness probe geeft enkel een statuscode HTTP200 indien ok, indien niet ok 
 
 
 ## Prometheus Metrics
-Endpoint waar het continuous monitoring systeem metrics kan opvragen van de status.
+Endpoint waar Prometheus metrics kan opvragen van de status.
 ```
 /status/metrics
 ```
